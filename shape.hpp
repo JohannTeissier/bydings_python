@@ -12,6 +12,8 @@ class Shape
         ~Shape();
 
         Point* get_position() const;
+        void set_position(Point point);
+        std::string get_name() const;
 
     protected:
 
