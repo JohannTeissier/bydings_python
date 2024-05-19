@@ -2,8 +2,14 @@
 
 Shape::Shape(Point position)
 {
+    this->_name = "Forme";
     this->_position = new Point{position};
-    this->_shape_name = "Forme";
+}
+
+Shape::Shape(Shape *shape)
+{
+    this->_name = "Forme";
+    this->_position = new Point{*shape->_position};
 }
 
 Shape::~Shape()
@@ -11,18 +17,18 @@ Shape::~Shape()
     delete this->_position;
 }
 
-Point *Shape::get_position() const
+const Point& Shape::get_position() const
 {
-    return this->_position;
+    return *(this->_position);
 }
 
-void Shape::set_position(Point point)
+void Shape::set_position(Point position)
 {
-    this->_position->set_x(point.get_x());
-    this->_position->set_y(point.get_y());
+    this->_position->set_x(position.get_x());
+    this->_position->set_y(position.get_y());
 }
 
 std::string Shape::get_name() const
 {
-    return this->_shape_name;
+    return this->_name;
 }

@@ -2,20 +2,18 @@ from function import Point
 from function import Shape
 from function import Circle
 
-def main():
-    circle = Circle(10, Point(12,24))
-    c2 = Circle(obj=circle.obj)
-    shape = Shape(Point(12, 35))
+p1 = Point(12, 15)
+c1 = Circle(p1, 123)
+print(c1.position.x, c1.position.y)
+print(c1.name)
+p1.x = 100
+p1.y = 200
+print(c1.position.x, c1.position.y)
+c1.position.x = 456
+c1.position.y = 0
+print(c1.position.x, c1.position.y)
+c1.position = Point(99, 88)
+print(c1.position.x, c1.position.y)
 
-    print(c2.position.x, c2.position.y)
-    c2.position.x = 100
-    c2.position.y = 200
-    print(c2.position.x, c2.position.y)
-    print(circle.position.x, circle.position.y)
-    print(circle.name)
 
-    print(shape.name)
-    print(shape.position.x, shape.position.y)
-
-if __name__ == '__main__':
-    main()
+#print(s.position.x, s.position.y)

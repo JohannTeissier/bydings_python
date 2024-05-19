@@ -1,18 +1,22 @@
-#include <iostream>
-#include <string>
-
 #include "point.hpp"
 #include "shape.hpp"
 #include "circle.hpp"
 
 extern "C"
 {
+    /*------------Point------------*/
+
     Point* create_point(int x, int y)
     {
         return new Point{x, y};
     }
 
-    void destroy_point(Point* point)
+    Point* copy_point(Point *point)
+    {
+        return new Point{*point};
+    }
+
+    void destroy_point(Point *point)
     {
         delete point;
     }
@@ -37,15 +41,16 @@ extern "C"
         point->set_y(y);
     }
 
-    void func(char* phrase)
-    {
-        std::string s{phrase};
-        std::cout << s << std::endl;
-    }
+    /*------------Shape------------*/
 
     Shape* create_shape(Point *position)
     {
         return new Shape{*position};
+    }
+
+    Shape* copy_shape(Shape *shape)
+    {
+        return new Shape{shape};
     }
 
     void destroy_shape(Shape *shape)
@@ -58,9 +63,9 @@ extern "C"
         return shape->get_name().c_str();
     }
 
-    Point* get_position(Shape *shape)
+    const Point* get_position(Shape *shape)
     {
-        return shape->get_position();
+        return &(shape->get_position());
     }
 
     void set_position(Shape *shape, Point *position)
@@ -68,9 +73,16 @@ extern "C"
         shape->set_position(*position);
     }
 
-    Circle* create_circle(int radius, Point* point)
+    /*------------Circle------------*/
+
+    Circle* create_circle(Point *position, int radius)
     {
-        return new Circle{radius, *point};
+        return new Circle{*position, radius};
+    }
+
+    Circle* copy_circle(Circle *circle)
+    {
+        return new Circle{circle};
     }
 
     void destroy_circle(Circle *circle)
@@ -81,10 +93,5 @@ extern "C"
     int get_radius(Circle *circle)
     {
         return circle->get_radius();
-    }
-
-    void set_radius(Circle *circle, int radius)
-    {
-        circle->set_radius(radius);
     }
 }

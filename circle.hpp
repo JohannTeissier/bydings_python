@@ -6,10 +6,10 @@ class Circle : public Shape
 {
     public:
 
-        Circle(int radius, Point position);
+        Circle(Point position, int radius);
+        Circle(Circle *circle);
 
         int get_radius() const;
-        void set_radius(int radius);
 
     private:
 

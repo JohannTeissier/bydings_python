@@ -1,17 +1,18 @@
 #include "circle.hpp"
 
-Circle::Circle(int radius, Point position) : Shape(position)
+Circle::Circle(Point position, int radius) : Shape(position)
 {
     this->_radius = radius;
-    this->_shape_name = "Circle";
+    this->_name = "Circle";
+}
+
+Circle::Circle(Circle *circle) : Shape(*circle->_position)
+{
+    this->_radius = circle->_radius;
+    this->_name = "Circle";
 }
 
 int Circle::get_radius() const
 {
     return this->_radius;
-}
-
-void Circle::set_radius(int radius)
-{
-    this->_radius = radius;
 }

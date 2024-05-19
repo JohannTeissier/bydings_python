@@ -9,14 +9,15 @@ class Shape
     public:
 
         Shape(Point position);
+        Shape(Shape *shape);
         ~Shape();
 
-        Point* get_position() const;
-        void set_position(Point point);
+        const Point& get_position() const;
+        void set_position(Point position);
         std::string get_name() const;
 
     protected:
 
-        std::string _shape_name;
+        std::string _name;
         Point *_position;
 };

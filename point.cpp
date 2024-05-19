@@ -1,9 +1,7 @@
 #include "point.hpp"
 
-Point::Point(int x, int y)
+Point::Point(int x, int y) : _x(x), _y(y)
 {
-    this->_x = x;
-    this->_y = y;
 }
 
 int Point::get_x() const
